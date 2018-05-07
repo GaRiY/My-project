@@ -1,4 +1,4 @@
-class Grass {
+class Grass extends Queen {
     constructor(x, y, index) {
         this.mul = 0;
         this.can = [];

@@ -1,4 +1,4 @@
-class Human {
+class Human  extends Queen {
     constructor() {
         this.can = [];
         this.x = 0;

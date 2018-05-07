@@ -1,4 +1,4 @@
-class Cow {
+class Cow extends Queen {
     constructor(x, y, index) {
         this.can = [];
         this.ttd = 5;
