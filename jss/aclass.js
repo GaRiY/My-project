@@ -1,3 +1,5 @@
+var Queen = require("./QueenClass");
+
 class Brownbear extends Queen {
 
     getNewCoordinates() {

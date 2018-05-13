@@ -1,5 +1,10 @@
 var express = require("express");
 var app = express();
+var Bear = require("./jss/aclass");
+var Wolf = require("./jss/gclass");
+var Cow = require("./jss/kclass");
+var Human = require("./jss/mclass");
+var Grass = require("./jss/xclass");
 
 app.use(express.static("public"));
 

@@ -1,5 +1,8 @@
+var Queen = require("./QueenClass");
+
 class Wolf extends Queen {
     constructor(x, y, index) {
+        super(x, y, index);
         this.genarr = ["male", "female"];
         this.gender = random(this.genarr);
         this.mul = 0;
@@ -39,22 +42,6 @@ class Wolf extends Queen {
             [this.x + 1, this.y + 2],
             [this.x + 2, this.y + 2]
         ];
-    }
-
-
-
-    yntrelVandak(ind) {
-        this.getNewCoordinates();
-        this.can = [];
-        for (var i in this.directions) {
-            var x = this.directions[i][0];
-            var y = this.directions[i][1];
-            if (x >= 0 && x < arr[0].length && y >= 0 && y < arr.length) {
-                if (arr[y][x] == ind) {
-                    this.can.push([x, y]);
-                }
-            }
-        }
     }
 
     move(i) {

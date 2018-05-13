@@ -1,5 +1,8 @@
+var Queen = require("./QueenClass");
+
 class Grass extends Queen {
     constructor(x, y, index) {
+        super(x, y, index);
         this.mul = 0;
         this.can = [];
         this.x = x;

@@ -1,8 +1,10 @@
-class Cow extends Queen {
+module.exports = class Queen {
     constructor(x, y, index) {
-        this.can = [];
-        this.ttd = 5;
+        this.genarr = ["male", "female"];
+        this.gender = this.genarr[Math.floor(Math.random()*this.genarr.length)];;
         this.mul = 0;
+        this.can = [];
+        this.ttd = 30;
         this.x = x;
         this.y = y;
         this.index = index;
@@ -46,10 +48,10 @@ class Cow extends Queen {
             this.yntrelVandak(0);
 
             if (this.can.length != 0) {
-                var newcw = random(this.can);
-                var x = newcw[0];
-                var y = newcw[1];
-                arr[y][x] = 2;
+                var newgy = random(this.can);
+                var x = newgy[0];
+                var y = newgy[1];
+                arr[y][x] = 4;
                 arr[this.y][this.x] = 0;
                 this.x = x;
                 this.y = y;
@@ -59,8 +61,7 @@ class Cow extends Queen {
     }
 
 
-
-    eat(i) {
+       eat(i) {
         this.yntrelVandak(1);
         if (this.can.length != 0) {
             var newcw = random(this.can);
@@ -87,21 +88,8 @@ class Cow extends Queen {
     }
 
     kill(i) {
-        arr[this.y][this.x] = 0;
-        kov.splice(i, 1);
+        arr[this.y][this.x] = 0
+        gayl.splice(i, 1);
     }
 
-    multiplying() {
-        this.mul++;
-        this.yntrelVandak(0);
-        if (this.mul >= 3) {
-            var newcw = random(this.can);
-            var x = newcw[0];
-            var y = newcw[1];
-            arr[y][x] = 2;
-            kov.push(new Cow(x, y, 2));
-            this.mul = 0;
-
-        }
-    }
 }

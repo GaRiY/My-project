@@ -1,5 +1,8 @@
+var Queen = require("./QueenClass");
+
 class Human  extends Queen {
     constructor() {
+		super();
         this.can = [];
         this.x = 0;
         this.y = 0;
