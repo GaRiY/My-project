@@ -1,6 +1,6 @@
 var Queen = require("./QueenClass");
 
-class Cow extends Queen {
+module.exports = class Cow extends Queen {
     constructor(x, y, index) {
         super(x, y, index);
         this.can = [];
@@ -34,7 +34,7 @@ class Cow extends Queen {
             this.yntrelVandak(0);
 
             if (this.can.length != 0) {
-                var newcw = random(this.can);
+                var newcw = this.can[Math.floor(Math.random() * this.can.length)];
                 var x = newcw[0];
                 var y = newcw[1];
                 arr[y][x] = 2;
@@ -51,7 +51,7 @@ class Cow extends Queen {
     eat(i) {
         this.yntrelVandak(1);
         if (this.can.length != 0) {
-            var newcw = random(this.can);
+            var newcw = this.can[Math.floor(Math.random() * this.can.length)];
             var x = newcw[0];
             var y = newcw[1];
             arr[y][x] = 2;
@@ -83,7 +83,7 @@ class Cow extends Queen {
         this.mul++;
         this.yntrelVandak(0);
         if (this.mul >= 3) {
-            var newcw = random(this.can);
+            var newcw = this.can[Math.floor(Math.random() * this.can.length)];
             var x = newcw[0];
             var y = newcw[1];
             arr[y][x] = 2;

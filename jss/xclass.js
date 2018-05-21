@@ -1,6 +1,6 @@
 var Queen = require("./QueenClass");
 
-class Grass extends Queen {
+module.exports = class Grass extends Queen {
     constructor(x, y, index) {
         super(x, y, index);
         this.mul = 0;
@@ -40,7 +40,7 @@ class Grass extends Queen {
             this.mul = 0;
             this.yntrelVandak(0);
             if (this.can.length != 0) {
-                var newgr = random(this.can);
+                var newgr = this.can[Math.floor(Math.random() * this.can.length)];
                 var x = newgr[0];
                 var y = newgr[1];
                 arr[y][x] = 1;

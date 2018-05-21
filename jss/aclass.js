@@ -1,6 +1,6 @@
 var Queen = require("./QueenClass");
 
-class Brownbear extends Queen {
+module.exports = class Brownbear extends Queen {
 
     getNewCoordinates() {
         this.directions = [
@@ -63,7 +63,7 @@ class Brownbear extends Queen {
             this.yntrelVandak(0);
 
             if (this.can.length != 0) {
-                var newgy = random(this.can);
+                var newgy = this.directions[Math.floor(Math.random() * this.directions.length)];
                 var x = newgy[0];
                 var y = newgy[1];
                 arr[y][x] = 4;
@@ -79,7 +79,7 @@ class Brownbear extends Queen {
     eat(i) {
         this.yntrelVandak(3);
         if (this.can.length != 0) {
-            var newgy = random(this.can);
+            var newgy = this.can[Math.floor(Math.random() * this.can.length)];
             var x = newgy[0];
             var y = newgy[1];
             arr[y][x] = 4;
@@ -100,7 +100,7 @@ class Brownbear extends Queen {
         else {
             this.yntrelVandak(2);
             if (this.can.length != 0) {
-                var newgy = random(this.can);
+                var newgy = this.can[Math.floor(Math.random() * this.can.length)];
                 var x = newgy[0];
                 var y = newgy[1];
                 arr[y][x] = 4;
@@ -122,7 +122,7 @@ class Brownbear extends Queen {
                 this.yntrelVandak(1);
 
                 if (this.can.length != 0) {
-                    var newgy = random(this.can);
+                    var newgy = this.can[Math.floor(Math.random() * this.can.length)];
                     var x = newgy[0];
                     var y = newgy[1];
                     arr[y][x] = 4;
@@ -160,7 +160,7 @@ class Brownbear extends Queen {
                     var y = this.can[i][1];
                     if (gayl[i].x == x && gayl[i].y == y && gayl[i].gender != this.gender) {
                         if (this.mul >= 5) {
-                            var newgy = random(this.can);
+                            var newgy = this.can[Math.floor(Math.random() * this.can.length)];
                             var x = newgy[0];
                             var y = newgy[1];
                             arr[y][x] = 2;

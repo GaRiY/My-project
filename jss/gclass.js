@@ -1,10 +1,10 @@
 var Queen = require("./QueenClass");
 
-class Wolf extends Queen {
+module.exports = class Wolf extends Queen {
     constructor(x, y, index) {
         super(x, y, index);
         this.genarr = ["male", "female"];
-        this.gender = random(this.genarr);
+        this.gender = this.genarr[Math.floor(Math.random() * this.genarr.length)];
         this.mul = 0;
         this.goa = 0;
         this.can = [];
@@ -52,7 +52,7 @@ class Wolf extends Queen {
             this.yntrelVandak(0);
 
             if (this.can.length != 0) {
-                var newgy = random(this.can);
+                var newgy = this.can[Math.floor(Math.random() * this.can.length)];
                 var x = newgy[0];
                 var y = newgy[1];
                 arr[y][x] = 3;
@@ -66,7 +66,7 @@ class Wolf extends Queen {
                 this.yntrelVandak(1);
 
                 if (this.can.length != 0) {
-                    var newgy = random(this.can);
+                    var newgy = this.can[Math.floor(Math.random() * this.can.length)];
                     var x = newgy[0];
                     var y = newgy[1];
                     arr[y][x] = 3;
@@ -84,7 +84,7 @@ class Wolf extends Queen {
     eat(i) {
         this.yntrelVandak(2);
         if (this.can.length != 0) {
-            var newgy = random(this.can);
+            var newgy = this.can[Math.floor(Math.random() * this.can.length)];
             var x = newgy[0];
             var y = newgy[1];
             arr[y][x] = 3;
@@ -121,8 +121,8 @@ class Wolf extends Queen {
                     var x = this.can[i][0];
                     var y = this.can[i][1];
                     if (gayl[i].x == x && gayl[i].y == y && gayl[i].gender != this.gender) {
-                        if (this.mul >= 5) {
-                            var newgy = random(this.can);
+                        if (this.mul >= 2) {
+                            var newgy = this.can[Math.floor(Math.random() * this.can.length)];
                             var x = newgy[0];
                             var y = newgy[1];
                             arr[y][x] = 2;

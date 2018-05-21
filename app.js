@@ -1,29 +1,20 @@
 var express = require("express");
 var app = express();
+var server = require('http').Server(app);
+var io = require('socket.io')(server);
 var Bear = require("./jss/aclass");
 var Wolf = require("./jss/gclass");
 var Cow = require("./jss/kclass");
 var Human = require("./jss/mclass");
 var Grass = require("./jss/xclass");
-
-app.use(express.static("public"));
-
-app.get("/", function(req, res){
-   res.redirect("public/index.html");
-});
-
-app.listen(3000, function(){
-   console.log("Example is running on port 3000");
-});
-
-var arr = [];
-var xot = [];
-var kov = [];
-var gayl = [];
-var arj = [];
+arr = [];
+xot = [];
+kov = [];
+gayl = [];
+arj = [];
 var human = new Human();
-var H = 60;//prompt("hight");
-var W = 50;//prompt("Wight");
+H = 60;//prompt("hight");
+W = 50;//prompt("Wight");
 
 
 var side = 10;
@@ -32,86 +23,94 @@ var cowQanak = 10;
 var gaylQanak = 2;
 var arjQanak = 2;
 
- for (var y = 0; y < H; y++) {
-        arr[y] = [];
-        for (var x = 0; x < W; x++) {
-            arr[y].push(0);
-        }
 
-    }
-	arr[0][0] = 5;
+app.use(express.static("public"));
 
-    //1
-    while (kanachQanak > 0) {
-        var x = Math.floor(random(W));
-        var y = Math.floor(random(H));
-        if (arr[y][x] == 0) {
-            arr[y][x] = 1;
-            kanachQanak--;
-        }
+app.get("/", function (req, res) {
+    res.redirect("public/index.html");
+});
 
-    }
-    //2
-    while (cowQanak > 0) {
-        var x = Math.floor(random(W));
-        var y = Math.floor(random(H));
-        if (arr[y][x] == 0) {
-            arr[y][x] = 2;
-            cowQanak--;
-        }
+server.listen(3000);
+
+
+for (var y = 0; y < H; y++) {
+    arr[y] = [];
+    for (var x = 0; x < W; x++) {
+        arr[y].push(0);
     }
 
-    //3
-    while (gaylQanak > 0) {
-        var x = Math.floor(random(W));
-        var y = Math.floor(random(H));
-        if (arr[y][x] == 0) {
-            arr[y][x] = 3;
-            gaylQanak--;
-        }
+}
+arr[0][0] = 5;
+
+//1
+while (kanachQanak > 0) {
+    var x = Math.floor(Math.random() * W);
+    var y = Math.floor(Math.random() * H);
+    if (arr[y][x] == 0) {
+        arr[y][x] = 1;
+        kanachQanak--;
     }
 
-    //4
-    while (arjQanak > 0) {
-        var x = Math.floor(random(W));
-        var y = Math.floor(random(H));
-        if (arr[y][x] == 0) {
-            arr[y][x] = 4;
-            arjQanak--;
-        }
-
+}
+//2
+while (cowQanak > 0) {
+    var x = Math.floor(Math.random() * W);
+    var y = Math.floor(Math.random() * H);
+    if (arr[y][x] == 0) {
+        arr[y][x] = 2;
+        cowQanak--;
     }
+}
 
-    for (var y = 0; y < arr.length; y++) {
-        for (var x = 0; x < arr[y].length; x++) {
-            if (arr[y][x] == 1) {
-                var gr = new Grass(x, y, 1);
-                xot.push(gr);
-            }
-            if (arr[y][x] == 2) {
-                var cw = new Cow(x, y, 2);
-                kov.push(cw);
-            }
-            if (arr[y][x] == 3) {
-                var gy = new Wolf(x, y, 3);
-                gayl.push(gy);
-            }
-            if (arr[y][x] == 4) {
-                var ar = new Brownbear(x, y, 4);
-                arj.push(ar);
-            }
-        }
+//3
+while (gaylQanak > 0) {
+    var x = Math.floor(Math.random() * W);
+    var y = Math.floor(Math.random() * H);
+    if (arr[y][x] == 0) {
+        arr[y][x] = 3;
+        gaylQanak--;
+    }
+}
+
+//4
+while (arjQanak > 0) {
+    var x = Math.floor(Math.random() * W);
+    var y = Math.floor(Math.random() * H);
+    if (arr[y][x] == 0) {
+        arr[y][x] = 4;
+        arjQanak--;
     }
 
 }
 
-for (var k = 0; k < arr.length; k++) {
-        for (var l = 0; l < arr[k].length; l++) {
-
-		}
+for (var y = 0; y < arr.length; y++) {
+    for (var x = 0; x < arr[y].length; x++) {
+        if (arr[y][x] == 1) {
+            var gr = new Grass(x, y, 1);
+            xot.push(gr);
+        }
+        if (arr[y][x] == 2) {
+            var cw = new Cow(x, y, 2);
+            kov.push(cw);
+        }
+        if (arr[y][x] == 3) {
+            var gy = new Wolf(x, y, 3);
+            gayl.push(gy);
+        }
+        if (arr[y][x] == 4) {
+            var ar = new Bear(x, y, 4);
+            arj.push(ar);
+        }
+    }
 }
 
-	human.check();
+io.on('connection', function (socket) {
+    setInterval(func, 1000);
+});
+
+
+function func() {
+    human.check();
 
     for (i in arj) {
         arj[i].eat(i);
@@ -125,3 +124,6 @@ for (var k = 0; k < arr.length; k++) {
     for (i in xot) {
         xot[i].multiplying();
     }
+    io.sockets.emit('matrix', arr);
+
+}

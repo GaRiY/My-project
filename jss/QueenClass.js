@@ -48,7 +48,7 @@ module.exports = class Queen {
             this.yntrelVandak(0);
 
             if (this.can.length != 0) {
-                var newgy = random(this.can);
+                var newgy = this.can[Math.floor(Math.random() * this.can.length)];
                 var x = newgy[0];
                 var y = newgy[1];
                 arr[y][x] = 4;
@@ -64,7 +64,7 @@ module.exports = class Queen {
        eat(i) {
         this.yntrelVandak(1);
         if (this.can.length != 0) {
-            var newcw = random(this.can);
+            var newcw = this.can[Math.floor(Math.random() * this.can.length)];
             var x = newcw[0];
             var y = newcw[1];
             arr[y][x] = 2;

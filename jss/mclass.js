@@ -1,6 +1,10 @@
 var Queen = require("./QueenClass");
+var Grass = require("./xclass");
+var Cow = require("./kclass");
+var Wolf = require("./gclass");
+var Brownbear = require("./aclass");
 
-class Human  extends Queen {
+module.exports = class Human  extends Queen {
     constructor() {
 		super();
         this.can = [];
@@ -38,7 +42,7 @@ class Human  extends Queen {
             }
         }
 		if(this.can.length != 0){
-        var idk = random(this.can);
+        var idk = this.can[Math.floor(Math.random() * this.can.length)];
 		var x = idk[0];
 		var y = idk[1];
         arr[y][x] = ind;
@@ -47,8 +51,8 @@ class Human  extends Queen {
     }
 
     yntrelVandak(ind) {
-        var x = Math.floor(random(W));
-        var y = Math.floor(random(H));
+        var x = Math.floor(Math.random() * W);
+        var y = Math.floor(Math.random() * H);
         if (arr[y][x] == 0) {
             arr[y][x] = 5;
 			arr[0][0] = 10;
