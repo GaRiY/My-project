@@ -1,8 +1,32 @@
-
 var socket = io.connect('http://localhost:3000');
 var H = 60;//prompt("hight");
 var W = 50;//prompt("Wight");
 var side = 10;
+function main(){
+var exanakTime = 0;
+var exanak;
+var exdiv = document.getElementById('exdiv');
+var exanakarr = ["spring","summer","autumn","winter"];
+				//[garun,amar,ashun,cmer];
+
+function changing(){
+    var p = exdiv.getElementsByTagName("p");
+	console.log(exdiv);
+	if(exdiv != ){
+		p[0].remove();
+	}
+	exanakTime = Math.floor((Math.random() * 10000) + 1000);
+	exanak = exanakarr[Math.floor(Math.random() * exanakarr.length)];
+	    var p = document.createElement('p');
+        p.innerText = exanak;
+        exdiv.appendChild(p);
+		console.log(exdiv);
+		socket.emit("staci",exanakTime);
+
+}
+socket.on("gce!",changing);
+}
+window.onload = main
 
 
 function setup() {
@@ -42,8 +66,4 @@ function gcel(arr) {
         }
     }
 }
-
-
-
-
 

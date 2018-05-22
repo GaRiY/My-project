@@ -15,6 +15,7 @@ arj = [];
 var human = new Human();
 H = 60;//prompt("hight");
 W = 50;//prompt("Wight");
+var exanakTime = 60;
 
 
 var side = 10;
@@ -106,6 +107,11 @@ for (var y = 0; y < arr.length; y++) {
 
 io.on('connection', function (socket) {
     setInterval(func, 1000);
+	setInterval(cevihamar, exanakTime);
+	socket.on("staci",function(x){
+	exanakTime = x;
+});
+
 });
 
 
@@ -126,4 +132,8 @@ function func() {
     }
     io.sockets.emit('matrix', arr);
 
+}
+
+function cevihamar(){
+	io.sockets.emit('gce!')
 }
