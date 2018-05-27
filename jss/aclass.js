@@ -60,7 +60,7 @@ module.exports = class Brownbear extends Queen {
             this.kill(i);
         }
         else {
-            this.yntrelVandak(0);
+            super.yntrelVandak(0);
 
             if (this.can.length != 0) {
                 var newgy = this.directions[Math.floor(Math.random() * this.directions.length)];
@@ -164,7 +164,7 @@ module.exports = class Brownbear extends Queen {
                             var x = newgy[0];
                             var y = newgy[1];
                             arr[y][x] = 2;
-                            gayl.push(new Wolf(x, y, 3));
+                            gayl.push(new Brownbear(x, y, 3));
                             this.mul = 0;
 
                         }

@@ -5,23 +5,15 @@ var side = 10;
 function main(){
 var exanakTime = 0;
 var exanak;
-var exdiv = document.getElementById('exdiv');
 var exanakarr = ["spring","summer","autumn","winter"];
 				//[garun,amar,ashun,cmer];
+var Ptag = document.getElementById('Exanak');
 
 function changing(){
-    var p = exdiv.getElementsByTagName("p");
-	console.log(exdiv);
-	if(exdiv != ){
-		p[0].remove();
-	}
-	exanakTime = Math.floor((Math.random() * 10000) + 1000);
+	exanakTime = Math.floor((Math.random() * 200000) + 10000);
 	exanak = exanakarr[Math.floor(Math.random() * exanakarr.length)];
-	    var p = document.createElement('p');
-        p.innerText = exanak;
-        exdiv.appendChild(p);
-		console.log(exdiv);
-		socket.emit("staci",exanakTime);
+    Ptag.innerHTML = exanak;
+	socket.emit("staci",exanakTime);
 
 }
 socket.on("gce!",changing);
@@ -36,7 +28,7 @@ function setup() {
 }
 socket.on('matrix', gcel);
 function gcel(arr) {
-    for (var k = 0; k < arr.length; k++) {
+       for (var k = 0; k < arr.length; k++) {
         for (var l = 0; l < arr[k].length; l++) {
             if (arr[k][l] == 1) {
                 fill("Green");

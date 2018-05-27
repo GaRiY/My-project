@@ -109,6 +109,7 @@ io.on('connection', function (socket) {
     setInterval(func, 1000);
 	setInterval(cevihamar, exanakTime);
 	socket.on("staci",function(x){
+    console.log(exanakTime,x);
 	exanakTime = x;
 });
 
