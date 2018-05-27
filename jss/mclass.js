@@ -66,7 +66,7 @@ module.exports = class Human  extends Queen {
     }
 
     check() {
-        if (xot.length == 0) {
+        if (xot.length <= 3) {
             var newcord = this.yntrelVandak(1);
 			if(typeof(newcord) != "undefined"){
 			var x = newcord[0];
@@ -77,7 +77,7 @@ module.exports = class Human  extends Queen {
 			}
 			arr[0][0] = 5;
         }
-        else if (kov.length == 0) {
+        else if (kov.length <= 4) {
             var newcord = this.yntrelVandak(2);
 			if(typeof(newcord) != "undefined"){
 			var x = newcord[0];

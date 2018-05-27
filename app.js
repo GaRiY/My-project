@@ -15,8 +15,7 @@ arj = [];
 var human = new Human();
 H = 60;//prompt("hight");
 W = 50;//prompt("Wight");
-var exanakTime = 60;
-
+var exanakTime;
 
 var side = 10;
 var kanachQanak = (H * W) * 30 / 100;
@@ -107,16 +106,26 @@ for (var y = 0; y < arr.length; y++) {
 
 io.on('connection', function (socket) {
     setInterval(func, 1000);
-	setInterval(cevihamar, exanakTime);
-	socket.on("staci",function(x){
-    console.log(exanakTime,x);
-	exanakTime = x;
-});
 
 });
 
 
 function func() {
+
+    exanakTime++;
+
+    if(exanakTime % 80 == 0){
+        var exanak = Garun;
+    }
+    else if (exanakTime % 80 == 20){
+        var exanak = Amar;
+    }
+    else if(exanakTime % 80 == 40){
+        var exanak = Ashun;
+    }
+    else if(exanakTime % 80 == 60){
+        var exanak = Cmer;
+    }
     human.check();
 
     for (i in arj) {

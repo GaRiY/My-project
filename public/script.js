@@ -3,20 +3,9 @@ var H = 60;//prompt("hight");
 var W = 50;//prompt("Wight");
 var side = 10;
 function main(){
-var exanakTime = 0;
-var exanak;
-var exanakarr = ["spring","summer","autumn","winter"];
-				//[garun,amar,ashun,cmer];
 var Ptag = document.getElementById('Exanak');
 
-function changing(){
-	exanakTime = Math.floor((Math.random() * 200000) + 10000);
-	exanak = exanakarr[Math.floor(Math.random() * exanakarr.length)];
-    Ptag.innerHTML = exanak;
-	socket.emit("staci",exanakTime);
 
-}
-socket.on("gce!",changing);
 }
 window.onload = main
 
