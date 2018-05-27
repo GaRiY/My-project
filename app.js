@@ -116,15 +116,19 @@ function func() {
 
     if(exanakTime % 80 == 0){
         var exanak = Garun;
+        io.sockets.emit("Exanak@poxeq",exanak);
     }
     else if (exanakTime % 80 == 20){
         var exanak = Amar;
+        io.sockets.emit("Exanak@poxeq",exanak);
     }
     else if(exanakTime % 80 == 40){
         var exanak = Ashun;
+        io.sockets.emit("Exanak@poxeq",exanak);
     }
     else if(exanakTime % 80 == 60){
         var exanak = Cmer;
+        io.sockets.emit("Exanak@poxeq",exanak);
     }
     human.check();
 
